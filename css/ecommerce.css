@@ -115,9 +115,4 @@ footer {
 /* Media queries para dispositivos móviles */
 @media (max-width: 768px) {
 
-    /* Ajusta el espacio para las cards considerando el header fijo */
-    .hero-imagen {
-        padding-top: 110px;
-        /* Ajusta según la altura de tu header */
-    }
 }

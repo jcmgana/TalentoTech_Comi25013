@@ -109,22 +109,13 @@ main {
 }
 
 /* Efecto parallax */
-.parallax1,
-.parallax2 {
+.parallax1 {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.parallax1 {
     /* Imagen */
     background-image: url("https://images.unsplash.com/photo-1461354464878-ad92f492a5a0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    min-height: 15.625rem;
-}
-
-.parallax2 {
-    background-image: url("https://images.unsplash.com/photo-1527863280617-15596f92e5c8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     min-height: 15.625rem;
 }
 
@@ -150,29 +141,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/***** Semillas *****/
-#semillas {
-    padding: 1.25rem;
-    text-align: center;
-    background-image: linear-gradient(#F2D6B3, #D9C589);
-}
-
-#semillas img {
-    width: 24.25rem;
-    height: 16.188rem;
-}
-
-.temporadas-container {
-    margin-top: 1.25rem;
-    display: flex;
-    justify-content: center;
-    gap: 9.375rem;
-}
-
-.temporada:hover img {
-    filter: brightness(1.2);
 }
 
 /***** Reseñas *****/
@@ -384,17 +352,6 @@ form button {
         text-align: center;
     }
 
-    /* IMAGENES DE SEMILLAS */
-    #semillas img {
-        width: 100%;
-        height: auto;
-    }
-
-    .temporadas-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-    }
 
     /* GRID DE RESEÑAS */
     .reseñas-container {
