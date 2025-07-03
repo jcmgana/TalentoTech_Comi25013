@@ -8,11 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
         seccionProductos.innerHTML = "";
 
         if (!carrito.length){
+            let mensajeContenedor = document.createElement("div");
+            mensajeContenedor.classList.add("carrito-vacio");
+
+
             let mensajeCarrito = document.createElement("p");
             mensajeCarrito.classList.add("mensaje-carrito");
             mensajeCarrito.textContent = "El carrito está vacío";
+            let volverTienda = document.createElement("a");
+            volverTienda.href = "./ecommerce.html";
+            volverTienda.classList.add("btn-volver-tienda");
+            volverTienda.textContent = "Volver a la tienda";
         
-            seccionProductos.appendChild(mensajeCarrito);
+            mensajeContenedor.appendChild(mensajeCarrito);
+            mensajeContenedor.appendChild(volverTienda);
+            seccionProductos.appendChild(mensajeContenedor);
+
         } else {
             carrito.forEach((elemento, index) => {
                 let tarjetaProducto = document.createElement("article");
@@ -116,6 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("carrito", JSON.stringify(carrito));
         alert("Eliminando el producto");
         renderizarProductos();
+        renderizarBotones();
+        renderizarResumen();
     };
 
     const vaciarCarrito = () => {

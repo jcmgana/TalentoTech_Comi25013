@@ -77,6 +77,33 @@ h1 { text-align: center;
     font-size: 18px; /* Tamaño de fuente */
 }
 
+    .carrito-vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh; /* o 100vh si querés centrar en toda la pantalla */
+    text-align: center;
+    gap: 1rem;
+    }
+
+    .btn-volver-tienda {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s ease;
+    }
+
+    .btn-volver-tienda:hover {
+    background-color: #a9553b;
+    }
+
 .btn-eliminar-carrito {
     border-radius: 0.938rem;
     padding: 0.875rem 0.875rem;
@@ -86,6 +113,10 @@ h1 { text-align: center;
     transition: all 0.5s ease-out;
     backdrop-filter: blur(0.625rem);
     cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s ease;
 }
 .btn-eliminar-carrito:hover,
 .btn-eliminar-carrito:focus {
@@ -101,6 +132,10 @@ h1 { text-align: center;
     transition: all 0.5s ease-out;
     backdrop-filter: blur(0.625rem);
     cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s ease;
 }
 .btn-vaciar:hover,
 .btn-vaciar:focus {
@@ -116,6 +151,10 @@ h1 { text-align: center;
     transition: all 0.5s ease-out;
     backdrop-filter: blur(0.625rem);
     cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s ease;
 }
 .btn-finalizar:hover,
 .btn-finalizar:focus {
