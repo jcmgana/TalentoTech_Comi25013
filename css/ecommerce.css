@@ -1,5 +1,6 @@
+
 header {
-    background-color: rgba(96, 126, 166, 0.2);
+    background-color: #8C442A;
     position: absolute;
     top: 0;
     left: 0;
@@ -16,7 +17,7 @@ header {
 }
 
 nav a:hover {
-    color: #221d02;
+    color: #FFD700;
     /* Color dorado al pasar el mouse */
 }
 

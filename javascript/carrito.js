@@ -114,13 +114,13 @@ document.addEventListener("DOMContentLoaded", () => {
         carrito.splice(indice, 1);
 
         localStorage.setItem("carrito", JSON.stringify(carrito));
-        alert("Eliminado");
+        alert("Eliminando el producto");
         renderizarProductos();
     };
 
     const vaciarCarrito = () => {
         localStorage.removeItem("carrito");
-        alert("Carrito vacío");
+        alert("Vaciando el carrito");
         renderizarProductos();
         renderizarBotones();
         renderizarResumen();
