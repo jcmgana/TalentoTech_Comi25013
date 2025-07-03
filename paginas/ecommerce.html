@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online Germinate</title>
+    <!-- Acá linkeo los CSS de la estructura de todas las páginas y la principal-->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/ecommerce.css">
+    <!-- Acá linkeo las fuentes y los íconos -->
+    <link rel="icon" href="../imagenes/plant.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class = "layout">
+        <header>
+        <div class="header-contenedor">
+            <div class="logo">
+                <a href="../index.html"><img src="../imagenes/logo.png" alt="Logo" class="logo">
+            </div>
+            <!-- Links del nav -->
+            <nav class="nav">
+                <ul>
+                    <li><a href="../index.html#quienes-somos">Quienes Somos</a></li>
+                    <li><a href="../index.html#reseñas">Reseñas</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                    <li>
+                        <a href="./carrito.html" class="carrito-icono"> 
+                            🛒<span id="contador-carrito">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        </header>
+
+    <main>
+        <div id="contenedor-titulo">
+            <h2>Productos destacados</h2>
+        </div>
+        <section id = "contenedor-productos">
+            <!-- Renderizado de los productos -->
+
+        </section>
+        <div><a id="boton-top" href="#"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+        </div>
+    </main>
+
+        <footer>
+        <div class="footer-container">
+            <div class="footerNav">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="../index.html#quienes-somos">Quienes Somos</a></li>
+                    <li><a href="../index.html#reseñas">Reseñas</a></li>
+                    <li><a href="../index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="social-media">
+                <h4>Contactanos</h4>
+                <div class="botones-rrss">
+                    <p><a href="https://www.facebook.com" class="fa fa-facebook"></a></p>
+                    <p><a href="https://www.instagram.com" class="fa fa-instagram"></a></p>
+                </div>
+            </div>
+            <div class="maps">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7696.2631745810795!2d-57.53739931041576!3d-38.00603820053557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1747246907333!5m2!1ses!2sar"
+                    width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <p>&copy; 2025 Germinate. Todos los derechos reservados.</p>
+    </footer>
+    </div>
+
+    <script src="../javascript/app.js"></script>
+</body>
+</html>
