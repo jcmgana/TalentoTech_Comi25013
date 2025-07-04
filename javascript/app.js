@@ -25,8 +25,29 @@ document.addEventListener("DOMContentLoaded", () => {
                     precioProducto.classList.add("precio-producto");
                     precioProducto.textContent = `$${producto.price}`;
 
+                    let wrapperContador = document.createElement("div");
+                    wrapperContador.classList.add("wrapper-contador");
+
+                    let btnRestar = document.createElement("button");
+                    btnRestar.classList.add("btn-contador");
+                    btnRestar.textContent = "-";
+                    btnRestar.addEventListener("click", () => {
+                        restarContador(contadorProducto);
+                    })
+
+                    let contadorProducto = document.createElement("p");
+                    contadorProducto.classList.add("contador-producto");
+                    contadorProducto.textContent = "1";
+
+                    let btnSumar = document.createElement("button");
+                    btnSumar.classList.add("btn-contador");
+                    btnSumar.textContent = "+";
+                    btnSumar.addEventListener("click", () => {
+                        sumarContador(contadorProducto);
+                    });
+
                     let btnAgregar = document.createElement("button");
-                    btnAgregar.classList.add("boton-agregar")
+                    btnAgregar.classList.add("boton-agregar");
                     btnAgregar.textContent = "Agregar al carrito";
                     btnAgregar.addEventListener("click", () => {
                         alert(`${producto.title} agregado al carrito.`);
@@ -34,9 +55,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         actualizarAgregados();
                     });
                 
+                    wrapperContador.appendChild(btnRestar);
+                    wrapperContador.appendChild(contadorProducto);
+                    wrapperContador.appendChild(btnSumar);
+
                     tarjetaProducto.appendChild(imagenProducto);
                     tarjetaProducto.appendChild(tituloProducto);
                     tarjetaProducto.appendChild(precioProducto);
+                    tarjetaProducto.appendChild(wrapperContador);
                     tarjetaProducto.appendChild(btnAgregar);
 
                     contenedorProductos.appendChild(tarjetaProducto);
@@ -49,6 +75,26 @@ document.addEventListener("DOMContentLoaded", () => {
         carrito.push(producto);
         localStorage.setItem("carrito", JSON.stringify(carrito));
     }
+
+    const restarContador = (contadorProducto) => {
+        let valor = parseInt(contadorProducto.textContent);
+        if (valor > 1) {
+            contadorProducto.textContent = valor - 1; 
+        }
+    }
+
+    const sumarContador = (contadorProducto) => {
+            let valor = parseInt(contadorProducto.textContent);
+            if (valor < 20) {
+                contadorProducto.textContent = valor + 1;
+            } else {
+            contadorProducto.textContent = `${valor} (máx)`;
+            setTimeout(() => {
+                contadorProducto.textContent = valor;
+            }, 1000);
+}
+
+        };
 
     const actualizarAgregados = () => {
         const contadorCarrito = document.getElementById("contador-carrito");
