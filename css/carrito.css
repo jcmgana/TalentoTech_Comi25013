@@ -2,6 +2,9 @@ header {
     background-color: #333;
 }
 
+body {
+    margin-top: 120px;
+}
 
 .icono-carrito {
     color: white; /* Color del icono */
@@ -33,131 +36,279 @@ nav a:hover {
 h1 { text-align: center;
 }
 
-/* --- Contenedor del carrito --- */
-#contenedor-carrito {
-    width: 100%;
+.contenedor-carrito-layout {
+    display: flex;
+    gap: 30px;
+    padding: 20px;
     max-width: 1200px;
-    margin: 0 auto;
-    margin-top: 8rem;
-    text-align: center;
+    margin: 30px auto;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-/* --- Estilos de productos --- */
-#lista-carrito {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    padding: 1rem;
-    margin: 2rem;
-    justify-content: center;
+.seccion-izquierda-carrito {
+    flex: 2; /* Esta columna ocupará el doble de espacio que la derecha */
+    min-width: 400px; /* Asegura un ancho mínimo para evitar que se comprima demasiado */
+    padding: 20px;
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 8px; /* Esquinas redondeadas */
+    background-color: #fff; /* Fondo blanco */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil */
 }
 
-.tarjeta-producto {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin: 0 auto;
-    max-width: 400px;
+.lista-items-carrito {
+    display: flex;
+    flex-direction: column; /* Los items de la lista se apilan verticalmente */
+    gap: 15px; /* Espacio entre cada producto en la lista */
+}
+
+/* --- Estilos para cada Fila de Producto en la Lista --- */
+.item-carrito-lista {
+    display: flex; /* Habilita Flexbox para organizar los elementos dentro de la fila */
+    align-items: center; /* Centra verticalmente los elementos de la fila */
+    gap: 15px; /* Espacio entre los elementos (imagen, info, botones, total) */
+    padding-bottom: 15px; /* Espacio en la parte inferior de cada item */
+    border-bottom: 1px solid #eee; /* Línea separadora entre productos */
+    flex-wrap: wrap; /* Permite que los elementos de la fila se envuelvan en pantallas pequeñas */
+    justify-content: space-between; /* Distribuye el espacio para empujar elementos a los extremos */
+}
+
+/* Ajuste para el último ítem para que no tenga borde inferior extra */
+.item-carrito-lista:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.btn-eliminar-item {
+    background: none;
+    border: none;
+    color: #dc3545; /* Rojo para eliminar */
+    font-size: 1.4em;
+    cursor: pointer;
+    padding: 5px; /* Un poco de padding para que sea más fácil hacer click */
+    transition: color 0.2s ease-in-out;
+}
+
+.btn-eliminar-item:hover {
+    color: #c82333;
 }
 
 .imagen-producto {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
+    width: 80px; /* Tamaño de la miniatura de la imagen */
+    height: 80px;
+    object-fit: cover; /* Asegura que la imagen se recorte para llenar el espacio sin deformarse */
+    border-radius: 4px; /* Ligeras esquinas redondeadas para la imagen */
+}
+
+.info-item-carrito-details {
+    flex-grow: 1; /* Permite que este contenedor ocupe el espacio restante */
+    min-width: 150px; /* Asegura que el título y precio no se compriman demasiado */
 }
 
 .titulo-producto {
-    margin-bottom: 10px; /* Espacio inferior */
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #333;
 }
 
-.precio-producto {
-    color: green; /* Texto en color verde */
-    font-size: 18px; /* Tamaño de fuente */
+.precio-unitario-item-carrito {
+    font-size: 0.9em;
+    color: #666;
 }
 
-    .carrito-vacio {
+/* --- Wrapper de Cantidad (+/- y número) --- */
+.wrapper-cantidad {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 50vh; /* o 100vh si querés centrar en toda la pantalla */
-    text-align: center;
-    gap: 1rem;
-    }
-
-    .btn-volver-tienda {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.2s ease;
-    }
-
-    .btn-volver-tienda:hover {
-    background-color: #a9553b;
-    }
-
-.btn-eliminar-carrito {
-    border-radius: 0.938rem;
-    padding: 0.875rem 0.875rem;
-    margin: 0.938rem;
-    color: antiquewhite;
-    background-color: #6b0404;
-    transition: all 0.5s ease-out;
-    backdrop-filter: blur(0.625rem);
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.2s ease;
+    gap: 5px;
+    margin-left: auto; /* Empuja el control de cantidad hacia la derecha */
 }
-.btn-eliminar-carrito:hover,
-.btn-eliminar-carrito:focus {
-    background-color: rgb(24, 0, 0);
+
+.btn-cantidad-carrito {
+    background-color: #007bff; /* Azul para los botones de cantidad */
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Botones circulares */
+    font-size: 1.1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-cantidad-carrito:hover {
+    background-color: #0056b3;
+}
+
+.cantidad-display-carrito {
+    font-weight: bold;
+    font-size: 1.1em;
+    min-width: 25px; /* Asegura espacio para el número */
+    text-align: center;
+}
+
+.precio-total-item {
+    font-weight: bold;
+    color: #28a745; /* Un verde distintivo para el total de la línea */
+    font-size: 1.1em;
+    margin-left: 20px; /* Espacio extra a la izquierda del total */
+}
+
+/* --- Sección Inferior Izquierda (Botón Vaciar Carrito) --- */
+.acciones-carrito-inferior-izquierda {
+    margin-top: 20px; /* Margen superior para separarlo de la lista de productos */
+    text-align: right; /* Alinea el botón a la derecha */
 }
 
 .btn-vaciar {
-    border-radius: 0.938rem;
-    padding: 0.875rem 0.875rem;
-    margin: 0.938rem;
-    color: rgb(0, 0, 0);
-    background-color: #e7adc8;
-    transition: all 0.5s ease-out;
-    backdrop-filter: blur(0.625rem);
+    background-color: #ffc107; /* Amarillo para vaciar */
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    text-decoration: none;
+    font-size: 1em;
     font-weight: bold;
-    text-align: center;
-    transition: background-color 0.2s ease;
-}
-.btn-vaciar:hover,
-.btn-vaciar:focus {
-    background-color: rgb(255, 255, 255);
+    transition: background-color 0.2s ease-in-out;
 }
 
-.btn-finalizar {
-    border-radius: 0.938rem;
-    padding: 0.875rem 0.875rem;
-    margin: 0.938rem;
-    color: rgb(0, 0, 0);
-    background-color: #97e493;
-    transition: all 0.5s ease-out;
-    backdrop-filter: blur(0.625rem);
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.2s ease;
+.btn-vaciar:hover {
+    background-color: #e0a800;
 }
-.btn-finalizar:hover,
-.btn-finalizar:focus {
-    background-color: #053502;
-    color: antiquewhite;
+
+/* --- Sección Derecha: Cuadro Resumen --- */
+.seccion-derecha-carrito {
+    flex: 1; /* Esta columna ocupará 1 parte del espacio */
+    min-width: 280px; /* Ancho mínimo para el resumen */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fa; /* Un gris muy claro */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.cuadro-resumen-carrito h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.cuadro-resumen-carrito p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    color: #555;
+}
+
+.cuadro-resumen-carrito strong {
+    color: #000;
+}
+
+/* --- Botón Finalizar Compra --- */
+.btn-finalizar-compra {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 12px 20px;
+    background-color: #28a745; /* Un verde vibrante */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px; /* Margen superior para separarlo del resumen */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-finalizar-compra:hover {
+    background-color: #218838;
+}
+
+/* --- Mensaje de Carrito Vacío --- */
+.carrito-vacio {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2em;
+    color: #777;
+    border-radius: 8px;
+    margin: 50px auto;
+    max-width: 600px;
+}
+
+.mensaje-carrito {
+    margin-bottom: 20px;
+}
+
+.btn-volver-tienda {
+    display: inline-block; /* Para que el padding y margin funcionen correctamente */
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-volver-tienda:hover {
+    background-color: #0056b3;
+}
+
+
+@media (max-width: 768px) {
+    .contenedor-carrito-layout {
+        flex-direction: column; /* En pantallas pequeñas, las columnas se apilan */
+        align-items: stretch; /* Se estiran para ocupar el ancho completo */
+        padding: 15px;
+    }
+
+    .seccion-izquierda-carrito,
+    .seccion-derecha-carrito {
+        min-width: unset; /* Quita el min-width para que ocupen todo el ancho */
+        width: 100%; /* Asegura que ocupen el 100% del ancho disponible */
+        padding: 15px; /* Ajusta el padding para pantallas pequeñas */
+    }
+
+    .item-carrito-lista {
+        flex-direction: column; /* Los elementos de la fila también se apilan */
+        align-items: flex-start; /* Alinea al inicio de la columna */
+        gap: 10px;
+        text-align: left;
+    }
+
+    .imagen-item-carrito {
+        margin-right: 0; /* Elimina margen derecho */
+        margin-bottom: 10px; /* Añade margen inferior */
+    }
+
+    .wrapper-cantidad-controles {
+        margin-left: 0; /* Quita el margen que lo empujaba a la derecha */
+        margin-top: 10px; /* Añade un poco de espacio si se apila */
+        width: 100%; /* Ocupa todo el ancho si se apila */
+        justify-content: center; /* Centra los botones si se apilan */
+    }
+
+    .precio-total-item {
+        margin-left: 0; /* Quita el margen izquierdo */
+        margin-top: 10px; /* Añade margen si es necesario */
+        width: 100%; /* Ocupa todo el ancho */
+        text-align: right; /* Alinea a la derecha para destacar */
+    }
+
+    .acciones-carrito-inferior-izquierda {
+        text-align: center; /* Centra el botón de vaciar en móvil */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes aún más finos para móviles muy pequeños si es necesario */
+    .btn-cantidad-carrito {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3em;
+    }
 }

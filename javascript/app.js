@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     wrapperContador.classList.add("wrapper-contador");
 
                     let btnRestar = document.createElement("button");
-                    btnRestar.classList.add("btn-contador");
+                    btnRestar.classList.add("btn-restar");
                     btnRestar.textContent = "-";
                     btnRestar.addEventListener("click", () => {
                         restarContador(contadorProducto);
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     contadorProducto.textContent = "1";
 
                     let btnSumar = document.createElement("button");
-                    btnSumar.classList.add("btn-contador");
+                    btnSumar.classList.add("btn-sumar");
                     btnSumar.textContent = "+";
                     btnSumar.addEventListener("click", () => {
                         sumarContador(contadorProducto);
@@ -50,9 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     btnAgregar.classList.add("boton-agregar");
                     btnAgregar.textContent = "Agregar al carrito";
                     btnAgregar.addEventListener("click", () => {
-                        alert(`${producto.title} agregado al carrito.`);
-                        agregarProducto(producto);
+                        let cantidadSeleccionada = parseInt(contadorProducto.textContent);
+                        let productoParaCarrito = { ...producto, cantidad: cantidadSeleccionada };
+                        alert(`${producto.title} x ${cantidadSeleccionada} agregado(s) al carrito.`);
+                        agregarProducto(productoParaCarrito);
                         actualizarAgregados();
+                        contadorProducto.textContent = "1";
                     });
                 
                     wrapperContador.appendChild(btnRestar);
@@ -71,10 +74,18 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch((err) => console.error("Error: ", err));
     };
 
-    const agregarProducto = (producto) => {
-        carrito.push(producto);
+    const agregarProducto = (productoParaCarrito) => {
+        const productoExistente = carrito.find(item => item.id === productoParaCarrito.id);
+        if (productoExistente) {
+            productoExistente.cantidad += productoParaCarrito.cantidad;
+            if (productoExistente.cantidad > 20) {
+                productoExistente.cantidad = 20;
+            }
+        } else {
+            carrito.push(productoParaCarrito);
+        }
         localStorage.setItem("carrito", JSON.stringify(carrito));
-    }
+    };
 
     const restarContador = (contadorProducto) => {
         let valor = parseInt(contadorProducto.textContent);
@@ -92,13 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
                 contadorProducto.textContent = valor;
             }, 1000);
-}
-
+            }
         };
 
     const actualizarAgregados = () => {
         const contadorCarrito = document.getElementById("contador-carrito");
-        contadorCarrito.textContent = carrito.length;
+        contadorCarrito.textContent = carrito.reduce((total, producto) => {
+            return total + producto.cantidad;
+        }, 0);
     };
 
     renderizarProductos();

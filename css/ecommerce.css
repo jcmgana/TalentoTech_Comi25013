@@ -1,6 +1,6 @@
 
 header {
-    background-color: #8C442A;
+    background-color: #0b3361;
     position: absolute;
     top: 0;
     left: 0;
@@ -73,6 +73,48 @@ nav a:hover {
     align-items: center;
 }
 
+.wrapper-contador {
+    display: flex;
+    background-color:#0b3361;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: #ddd;
+    gap: 15px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.btn-restar{
+    background-color: #0b3361;
+    color:#ddd;
+    font-size: larger;
+    border: none; /* Quita el borde predeterminado del botón */
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-left: 0.6rem;
+    cursor: pointer;
+}
+
+.btn-sumar{
+    background-color: #0b3361;
+    color:#ddd;
+    font-size: larger;
+    border: none; /* Quita el borde predeterminado del botón */
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-right: 0.6rem;
+    cursor: pointer;
+}
+
+.contador-producto {
+    background-color: #ffffff;
+    color: black;
+    padding: 0.5rem 1rem;
+    flex-grow: 1;
+    text-align: center;
+    border: none;
+    }
+
 .imagen-producto {
     max-width: 100%;
     height: auto;
@@ -105,7 +147,7 @@ nav a:hover {
 
 /* Estilo para el footer */
 footer {
-    background-color: #8C442A;
+    background-color: #0b3361;
 }
 
 @media (max-width: 992px) {
